@@ -10,7 +10,8 @@ const App = () => (
 			<Nav />
 			<Switch>
 				<Route exact path="/" component={Recipes} />
-				<Route exact path="/recipes" component={Recipes} />
+				<Route exact path="/recipe" component={Recipes} />
+				<Route exact path="/add" component={NewRecipe} />
 			</Switch>
 		</div>
 	</Router>

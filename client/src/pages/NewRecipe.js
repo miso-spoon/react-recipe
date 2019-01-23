@@ -25,17 +25,37 @@ class Recipes extends Component{
 		});
 	};
 
-    handleCreate = () => {
-        browserHistory.push('/add');
+    handleFormSubmit = event => {
+        event.preventDefault();
+        API.saveRecipe({
+            title: this.state.title,
+            cookTime: this.state.cookTime
+            })
+            .then(res => this.loadRecipes())
+            .catch(err => console.log(err));
     };
     render() {
         return (
-            <button
+        <form>
+            <Input 
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                    name="title"
+                    placeholder="Title (required)" 
+                />
+            <Input
+                    value={this.state.cookTime}
+                    onChange={this.handleInputChange}
+                    name="cookTime"
+                    placeholder="Cook Time (required)"
+                />
+            <FormBtn
                     //disabled={!(this.state.cookTime && this.state.title)}
-                    onClick={this.handleCreate}
+                    onClick={this.handleFormSubmit}
                     >
-                    Create New
-            </button>
+                    Submit Recipe
+            </FormBtn>
+        </form>
         );
     }
 
