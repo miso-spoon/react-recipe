@@ -8,14 +8,15 @@ class NewRecipe extends Component{
     state = {
         recipes: [],
         title: '',
-        cookTime: ''
+        cookTime: '',
+        difficulty: ''
     };
     componentDidMount() {
 		this.loadRecipes();
     }
     loadRecipes = () => {
         API.getRecipes()
-                .then(res => this.setState({ recipes: res.data, title: '', cookTime: ''}))
+                .then(res => this.setState({ recipes: res.data, title: '', cookTime: '', difficulty: ''}))
                 .catch(err => console.log(err));
     };
     handleInputChange = event => {
@@ -29,10 +30,12 @@ class NewRecipe extends Component{
         event.preventDefault();
         API.saveRecipe({
             title: this.state.title,
-            cookTime: this.state.cookTime
+            cookTime: this.state.cookTime,
+            difficulty: this.state.difficulty
             })
             .then(res => this.loadRecipes())
             .catch(err => console.log(err));
+        this.props.history.push('/');
     };
     render() {
         return (
@@ -49,6 +52,12 @@ class NewRecipe extends Component{
                     name="cookTime"
                     placeholder="Cook Time (required)"
                 />
+            <Input
+                    value={this.state.difficulty}
+                    onChange={this.handleInputChange}
+                    name="difficulty"
+                    placeholder="Difficulty"
+            />
             <FormBtn
                     //disabled={!(this.state.cookTime && this.state.title)}
                     onClick={this.handleFormSubmit}

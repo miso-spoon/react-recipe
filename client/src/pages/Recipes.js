@@ -20,12 +20,14 @@ class Recipes extends Component{
         cookTime: ''
     };
     componentDidMount() {
-		this.loadRecipes();
+        this.loadRecipes();
     }
     loadRecipes = () => {
         API.getRecipes()
+                // .then(res => console.log(res.data))
                 .then(res => this.setState({ recipes: res.data, title: '', cookTime: ''}))
                 .catch(err => console.log(err));
+
     };
     handleInputChange = event => {
 		const { name, value } = event.target;
@@ -37,6 +39,9 @@ class Recipes extends Component{
     handleCreate = () => {
         this.props.history.push('/add');
     };
+    deleteRecipe = (id) => {
+        API.deleteRecipe(id);
+    }
     render() {
         return (
             <Paper>
@@ -51,24 +56,27 @@ class Recipes extends Component{
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.recipes.map(recipe => (
+                        {this.state.recipes.map(recipe => (
                             <TableRow key={recipe._id}>
                                 <TableCell scope="row">{recipe.title}</TableCell>
                                 <TableCell align="right">{recipe.cookTime}</TableCell>
                                 <TableCell align="right">{recipe.difficulty}</TableCell>
                                 <TableCell align="right">Rating: 5.6</TableCell>
-                                <TableCell align="right">Work in Progress</TableCell>
+                                <TableCell align="right">
+                                    Delete Button Here
+                                    </TableCell>
                             </TableRow>
                             ))}
-                    </TableBody>
+                    </TableBody> 
                 </Table>
+                <button
+                    //disabled={!(this.state.cookTime && this.state.title)}
+                    onClick={this.handleCreate}
+                    >
+                    Create New
+                </button>
             </Paper>
-            // <button
-            //         //disabled={!(this.state.cookTime && this.state.title)}
-            //         onClick={this.handleCreate}
-            //         >
-            //         Create New
-            // </button>
+            
         );
     }
 
