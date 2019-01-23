@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 
+
 class Recipes extends Component{
     state = {
         recipes: [],
@@ -26,7 +27,7 @@ class Recipes extends Component{
 	};
 
     handleCreate = () => {
-        browserHistory.push('/add');
+        this.props.history.push('/add');
     };
     render() {
         return (
