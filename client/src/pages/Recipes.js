@@ -5,7 +5,7 @@ import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import {Button} from 'react-bootstrap';
 import { Redirect } from 'react-router';
-import { Details } from './Details';
+import { RecipeCard } from './RecipeCard';
 import './Recipes.css';
 
 
@@ -48,7 +48,7 @@ class Recipes extends Component{
         return (
                 <div>
                     <div classname="card-container">
-                        {this.state.recipes.map(recipe => (<Details recipe={recipe}/>))}
+                        {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe}/>))}
                     </div>
                     
                     <Button bsStyle="primary" onClick={this.handleCreate}>

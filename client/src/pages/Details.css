@@ -1,7 +1,59 @@
-.col-md{
-    width: 25%;
-    display: inline-block;
+.detail-container{
+    width: 100%;
+    outline-width: 1px;
+    outline-color: pink;
+    outline-style: solid;
+    margin: 0 auto;
+}
+.foodpic{
+    display: block;
+    margin: auto;
+}
+.col-md-6{
+    width: 47%;
+    /* outline-width: 1px;
+    outline-color: red;
+    outline-style: solid; */
+    margin: 0 auto;
+}
+.ingredients{
+    width: 49%;
+    /* outline-width: 1px;
+    outline-color: red;
+    outline-style: solid; */
+    margin: 0 auto;
+}
+.instruction-container{
+    width: 100%;
     outline-width: 1px;
     outline-color: red;
     outline-style: solid;
+    margin: 0 auto;
 }
+.ingredients-title{
+    display: inline-block;
+    text-align: center;
+    /* outline-width: 1px;
+    outline-color: red;
+    outline-style: solid; */
+    margin: 0 auto;
+}
+.instructions{
+    width: 90%;
+    /* outline-width: 1px;
+    outline-color: red;
+    outline-style: solid; */
+    margin: 0 auto;
+}
+ul{
+    margin: 0 auto;
+    padding-left: 17%;
+    padding: auto;
+    text-align: left;
+}
+
+
+li{
+    padding-left: 0;
+    background-position: 100%;
+} 
