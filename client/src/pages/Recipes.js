@@ -13,17 +13,18 @@ import './Recipes.css';
 
 class Recipes extends Component{
     state = {
-        recipes: [],
-        title: '',
-        cookTime: ''
+        recipes: []
     };
     componentDidMount() {
+        this.loadRecipes();
+    }
+    componentDidUpdate() {
         this.loadRecipes();
     }
     loadRecipes = () => {
         API.getRecipes()
                 // .then(res => console.log(res.data))
-                .then(res => this.setState({ recipes: res.data, title: '', cookTime: ''}))
+                .then(res => this.setState({ recipes: res.data}))
                 .catch(err => console.log(err));
 
     };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Ingredients } from './Ingredients';
 import './Details.css';
 
 export class Details extends Component{
@@ -17,29 +18,7 @@ export class Details extends Component{
                             </span>
                         </h4>
                         <div class="row">
-                            <div class="ingredients">
-                                <ul class="icon">
-                                    <li>
-                                        1/2 lb of Ground Chicken
-                                    </li>
-                                    <li>
-                                        Three
-                                    </li>
-                                    <li>
-                                        Five
-                                    </li>
-                                </ul>
-                            </div> 
-                            <div class="ingredients">
-                                <ul>
-                                    <li>
-                                        Two
-                                    </li>
-                                    <li>
-                                        Four
-                                    </li>
-                                </ul>   
-                            </div> 
+                            <Ingredients i={this.state.recipe.ingredientList} />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -51,7 +30,13 @@ export class Details extends Component{
                     <h3 class="instruction-title">Instructions:</h3>
                     <hr></hr>
                     <div class="instructions">
-
+                        <ol>
+                        {this.state.recipe.instructions.map(instruction => (
+                            <div class="instruction">
+                                <li>{instruction}</li>
+                            </div>
+                        ))}
+                        </ol>
                     </div>
                 </div>
             </div>

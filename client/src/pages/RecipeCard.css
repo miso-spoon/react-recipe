@@ -1,24 +1,30 @@
 .col-md{
-    width: 16%;
+    width: 34%;
     display: inline-block;
+    padding-left: 0;
+    position: relative;
     
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
 }
 .col-md-12{
-    width: 32%;
+    width: 30%;
     display: inline-block;
+    padding-top: 10px;
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
 }
 .mb-0{
-    width: 50%;
+    width: 36%;
 }
-.title{
-    font-size: 2rem;
-}
+
 .fa, .fas{
     padding-right: 5px;
+}
+.button-row{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }

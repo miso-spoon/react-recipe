@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 import './RecipeCard.css';
-import {Details} from './Details'
+import {Details} from './Details';
+import API from '../utils/API';
 
 export class RecipeCard extends Component{
     state = {
@@ -30,11 +32,11 @@ export class RecipeCard extends Component{
                                 </div>
                             </div>
                             <div class="col-md">
-                                <div class="row">
-                                    <span class="card-title"><i class="fas fa-pen"></i>Edit</span>
-                                </div>
-                                <div class="row">
-                                    <span class="card-title"><i class="fas fa-times"></i>Delete</span>
+                                <div class="button-row">
+                                    <span>
+                                    <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i>Edit</button>
+                                    <button type="button" class="btn btn-danger" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="fas fa-times"></i>Delete</button>
+                                    </span>
                                 </div>
                             </div>
                         </div>

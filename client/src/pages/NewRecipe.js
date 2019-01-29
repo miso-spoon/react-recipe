@@ -3,35 +3,31 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
+import './NewRecipe.css';
 
 class NewRecipe extends Component{
     state = {
         recipes: [],
         title: '',
         cookTime: '',
-        difficulty: ''
-    };
-    componentDidMount() {
-		this.loadRecipes();
-    }
-    loadRecipes = () => {
-        API.getRecipes()
-                .then(res => this.setState({ recipes: res.data, title: '', cookTime: '', difficulty: ''}))
-                .catch(err => console.log(err));
+        difficulty: '',
+        ingredientList: '',
+        instructions: ''
     };
     handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
-	};
-
+    };
     handleFormSubmit = event => {
         event.preventDefault();
         API.saveRecipe({
             title: this.state.title,
             cookTime: this.state.cookTime,
-            difficulty: this.state.difficulty
+            difficulty: this.state.difficulty,
+            ingredientList: this.state.ingredientList.split(','),
+            instructions: this.state.instructions.split('\n')
             })
             .then(res => this.loadRecipes())
             .catch(err => console.log(err));
@@ -58,6 +54,8 @@ class NewRecipe extends Component{
                     name="difficulty"
                     placeholder="Difficulty"
             />
+            <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
+            <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
             <FormBtn
                     //disabled={!(this.state.cookTime && this.state.title)}
                     onClick={this.handleFormSubmit}

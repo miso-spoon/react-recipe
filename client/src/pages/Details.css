@@ -25,9 +25,9 @@
 }
 .instruction-container{
     width: 100%;
-    outline-width: 1px;
+    /* outline-width: 1px;
     outline-color: red;
-    outline-style: solid;
+    outline-style: solid; */
     margin: 0 auto;
 }
 .ingredients-title{
