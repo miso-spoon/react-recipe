@@ -23,21 +23,17 @@ export class RecipeCard extends Component{
                                     {this.state.recipe.title}
                                 </button>
                             </h4>
-                            <div class="col-md-12">
-                                <div class="row">
+                            <div class="desc">
                                     <span class="card-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</span>
-                                </div>
-                                <div class="row">
                                     <span class="card-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</span>
-                                </div>
                             </div>
-                            <div class="col-md">
+
+                            <div class="button-column">
                                 <div class="button-row">
-                                    <span>
-                                    <button type="button" class="btn btn-warning"><i class="fas fa-pen"></i>Edit</button>
-                                    <button type="button" class="btn btn-danger" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="fas fa-times"></i>Delete</button>
-                                    </span>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="fas fa-times"></i></button>
+                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button>
                                 </div>
+
                             </div>
                         </div>
                     </div>

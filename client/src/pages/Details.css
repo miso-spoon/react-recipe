@@ -31,7 +31,14 @@
     margin: 0 auto;
 }
 .ingredients-title{
-    display: inline-block;
+    text-align: center;
+    /* outline-width: 1px;
+    outline-color: red;
+    outline-style: solid; */
+    padding-bottom: 1px;
+    margin-bottom: 2px;
+}
+.instruction-title{
     text-align: center;
     /* outline-width: 1px;
     outline-color: red;

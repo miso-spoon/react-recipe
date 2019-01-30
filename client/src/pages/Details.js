@@ -13,19 +13,16 @@ export class Details extends Component{
                 <div class="row">
                     <div class="col-md-6">
                         <h4 class="ingredients-title">
-                            <span>
-                                Ingredients:
-                            </span>
+                            Ingredients:
                         </h4>
                         <div class="row">
                             <Ingredients i={this.state.recipe.ingredientList} />
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img class="foodpic" src="http://placekitten.com/234/234" width="100%" />
+                        <img class="foodpic" src="https://placekitten.com/260/234" width="100%" />
                     </div>
                 </div>
-                <br></br>
                 <div class="instruction-container">
                     <h3 class="instruction-title">Instructions:</h3>
                     <hr></hr>
