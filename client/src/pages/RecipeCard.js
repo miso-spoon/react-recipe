@@ -46,8 +46,8 @@ export class RecipeCard extends Component{
 
                             <div class="button-column">
                                 <div class="button-row">
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="fas fa-times"></i></button>
-                                    <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="fas fa-pen"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="far fa-times-circle"></i></button>
+                                    <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="far fa-edit"></i></button>
                                 </div>
 
                             </div>
