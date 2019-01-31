@@ -15,13 +15,13 @@ class NewRecipe extends Component{
         ingredientList: '',
         instructions: '',
         file: null,
+        fileSelected: null
         // img: null
     };
     fileSelectedHandler = event => {
         var x = URL.createObjectURL(event.target.files[0]);
-        // x = x.slice(5, x.length);
         this.setState({
-            // fileSelected: event.target.files[0],
+            fileSelected: event.target.files[0],
             file: x
         })
     }
@@ -40,7 +40,8 @@ class NewRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.file
+            imgUrl: this.state.file,
+            img: this.state.selectedFile
             })
             .then(res => this.loadRecipes())
             .catch(err => console.log(err));

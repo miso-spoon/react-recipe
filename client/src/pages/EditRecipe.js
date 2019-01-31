@@ -15,7 +15,8 @@ export class EditRecipe extends Component{
         servings: '',
         ingredientList: '',
         instructions: '',
-        file: null
+        file: null,
+        selectedFile: null
     };
     componentWillMount() {
         var id = window.location.href.slice(window.location.href.length-24, window.location.href.length);
@@ -28,13 +29,17 @@ export class EditRecipe extends Component{
             servings: res.data.servings,
             ingredientList: res.data.ingredientList.join(','),
             instructions: res.data.instructions.join('\n'),
-            file: res.data.imgUrl}))
+            file: res.data.imgUrl,
+            selectedFile: res.data.img}))
 
     };
     fileSelectedHandler = event => {
         var x = URL.createObjectURL(event.target.files[0]);
+        console.log(typeof event.target.files[0])
+        console.log(event.target.files[0])
         this.setState({
-            file: x
+            file: x,
+            selectedFile: event.target.files[0]
         })
     }
     handleInputChange = event => {
@@ -52,7 +57,8 @@ export class EditRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.file
+            imgUrl: this.state.file,
+            img: this.state.selectedFile
             })
             .catch(err => console.log(err));
         this.props.history.push('/');

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import defaultThumb from '../../public/img/default-recipe-big.png'
 import './Thumbnail.css'
 
 export class Thumbnail extends Component{
@@ -8,11 +9,11 @@ export class Thumbnail extends Component{
 
 
     render() {
-        if (this.state.pic === ''){
-            return(<img class="thumbnail" src="../../public/img/default-recipe-big.png" width="50%"/>)
+        if (this.state.pic === null){
+            return(<img class="thumbnail" src={process.env.PUBLIC_URL + "/img/default-recipe-big.png"} />)
         }
         return(
-            <img class="thumbnail" src={this.state.pic} width="50%"/>
+            <img class="thumbnail" src={this.state.pic} />
         )
     }
 

@@ -52,9 +52,15 @@ class Recipes extends Component{
                         {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe}/>))}
                     </div>
                     
-                    <Button bsStyle="primary" onClick={this.handleCreate}>
-                        + Add
-                    </Button>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-1">
+                                <button class="btn btn-link title" type="button"  onClick={this.handleCreate}>
+                                    + Add New recipe
+                                </button>
+                            </h4>
+                        </div>
+                    </div>
                 </div>
 
             
