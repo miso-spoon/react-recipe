@@ -1,8 +1,8 @@
 .detail-container{
     width: 100%;
-    outline-width: 1px;
+    /* outline-width: 1px;
     outline-color: pink;
-    outline-style: solid;
+    outline-style: solid; */
     margin: 0 auto;
 }
 .foodpic{
@@ -15,6 +15,8 @@
     outline-color: red;
     outline-style: solid; */
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 .ingredients{
     width: 49%;
@@ -46,7 +48,9 @@
     margin: 0 auto;
 }
 .instructions{
-    width: 90%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .80rem;
+    width: 100%;
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
@@ -58,9 +62,20 @@ ul{
     padding: auto;
     text-align: left;
 }
+.icon1{
+    padding-left: 13px;
+    width: 70%;
+}
+.icon2{
+    padding-left: 1px;
+    width: 100%;
+}
 
 
 li{
     padding-left: 0;
     background-position: 100%;
 } 
+.in{
+    padding-left: 20px;
+}

@@ -17,14 +17,14 @@ export class Ingredients extends Component{
         return(
         <div class ="row">
             <div class="ingredients">
-                <ul class="icon">  
+                <ul class="icon1">  
                     {this.state.right.map(i => (
                         <li class="li-s">{i}</li>
                     ))}
                 </ul>
             </div> 
             <div class="ingredients">
-                <ul class="icon">
+                <ul class="icon2">
                 {this.state.left.map(i => (
                         <li class="li-s">{i}</li>
                     ))}

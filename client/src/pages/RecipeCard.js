@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
+import { Route, Redirect } from 'react-router'
 import './RecipeCard.css';
 import {Details} from './Details';
 import API from '../utils/API';
+import {EditRecipe} from './EditRecipe';
 
 export class RecipeCard extends Component{
     state = {
-            recipe: this.props.recipe
+            recipe: this.props.recipe,
+            edit: false
     }
-
+    handleEdit = () => {
+        // this.props.history.push('/edit/' + this.state.recipe._id);
+        // window.location.reload();
+        this.setState(()=> ({
+            edit: true
+        }))
+    };
     render() {
+        if (this.state.edit === true){
+            return <Redirect to={'/edit/' + this.state.recipe._id} />
+        }
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
         return (
@@ -24,14 +36,14 @@ export class RecipeCard extends Component{
                                 </button>
                             </h4>
                             <div class="desc">
-                                    <span class="card-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</span>
-                                    <span class="card-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</span>
+                                    <div class="row-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</div>
+                                    <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
                             </div>
 
                             <div class="button-column">
                                 <div class="button-row">
                                     <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="fas fa-times"></i></button>
-                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button>
+                                    <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="fas fa-pen"></i></button>
                                 </div>
 
                             </div>
@@ -48,6 +60,5 @@ export class RecipeCard extends Component{
     );
     }
 }
-
 
 export default RecipeCard;

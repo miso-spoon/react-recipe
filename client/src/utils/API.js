@@ -16,5 +16,8 @@ export default {
 	// Saves a recipe to the database
 	saveRecipe: function(recipeData) {
 		return axios.post('/api/recipe', recipeData);
+	},
+	updateRecipe: function(id, recipeData) {
+		return axios.put('/api/recipe/' + id, recipeData);
 	}
 };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Recipes from './pages/Recipes';
 import NewRecipe from './pages/NewRecipe';
+import EditRecipe from './pages/EditRecipe';
 import RecipeCard from './pages/RecipeCard';
 import Details from './pages/Details';
 import './App.css';
@@ -15,7 +16,7 @@ const App = () => (
 				<Route exact path="/" component={Recipes} />
 				<Route exact path="/recipe" component={Recipes} />
 				<Route exact path="/add" component={NewRecipe} />
-				<Route exact path="/recipe/:id" component={Details} />
+				<Route exact path="/edit/:id" component={EditRecipe} />
 			</Switch>
 		</div>
 	</Router>

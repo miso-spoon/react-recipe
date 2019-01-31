@@ -13,7 +13,16 @@ class NewRecipe extends Component{
         difficulty: '',
         ingredientList: '',
         instructions: ''
+        // file: null,
+        // img: null
     };
+    // fileSelectedHandler = event => {
+    //     console.log(event.target.files[0]);
+    //     this.setState({
+    //         fileSelected: event.target.files[0],
+    //         file: URL.createObjectURL(event.target.files[0])
+    //     })
+    // }
     handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
@@ -27,7 +36,8 @@ class NewRecipe extends Component{
             cookTime: this.state.cookTime,
             difficulty: this.state.difficulty,
             ingredientList: this.state.ingredientList.split(','),
-            instructions: this.state.instructions.split('\n')
+            instructions: this.state.instructions.split('\n'),
+            img: this.state.img
             })
             .then(res => this.loadRecipes())
             .catch(err => console.log(err));
@@ -35,34 +45,39 @@ class NewRecipe extends Component{
     };
     render() {
         return (
-        <form>
-            <Input 
-                    value={this.state.title}
-                    onChange={this.handleInputChange}
-                    name="title"
-                    placeholder="Title (required)" 
-                />
-            <Input
-                    value={this.state.cookTime}
-                    onChange={this.handleInputChange}
-                    name="cookTime"
-                    placeholder="Cook Time (required)"
-                />
-            <Input
-                    value={this.state.difficulty}
-                    onChange={this.handleInputChange}
-                    name="difficulty"
-                    placeholder="Difficulty"
-            />
-            <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
-            <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
-            <FormBtn
-                    //disabled={!(this.state.cookTime && this.state.title)}
-                    onClick={this.handleFormSubmit}
-                    >
-                    Submit Recipe
-            </FormBtn>
-        </form>
+                <div class="form-container">
+                    <h4>New Recipe:</h4>
+                    <form>
+                        <Input 
+                                value={this.state.title}
+                                onChange={this.handleInputChange}
+                                name="title"
+                                placeholder="Title (required)" 
+                            />
+                        <Input
+                                value={this.state.cookTime}
+                                onChange={this.handleInputChange}
+                                name="cookTime"
+                                placeholder="Cook Time (required)"
+                            />
+                        <Input
+                                value={this.state.difficulty}
+                                onChange={this.handleInputChange}
+                                name="difficulty"
+                                placeholder="Difficulty"
+                        />
+                        <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
+                        <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+                        <br></br>
+                        <button type="button" class="btn btn-danger" value="Upload" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
+                        <FormBtn
+                                //disabled={!(this.state.cookTime && this.state.title)}
+                                onClick={this.handleFormSubmit}
+                                >
+                                Submit Recipe
+                        </FormBtn>
+                    </form>
+                 </div>
         );
     }
 

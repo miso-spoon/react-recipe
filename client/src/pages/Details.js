@@ -6,6 +6,9 @@ export class Details extends Component{
     state = {
         recipe: this.props.recipe
     }
+    componentDidMount(){
+        console.log(this.state.recipe._id);
+    }
 
     render() {
         return (
@@ -15,9 +18,7 @@ export class Details extends Component{
                         <h4 class="ingredients-title">
                             Ingredients:
                         </h4>
-                        <div class="row">
                             <Ingredients i={this.state.recipe.ingredientList} />
-                        </div>
                     </div>
                     <div class="col-md-6">
                         <img class="foodpic" src="https://placekitten.com/260/234" width="100%" />
@@ -27,7 +28,7 @@ export class Details extends Component{
                     <h3 class="instruction-title">Instructions:</h3>
                     <hr></hr>
                     <div class="instructions">
-                        <ol>
+                        <ol class="in">
                         {this.state.recipe.instructions.map(instruction => (
                             <div class="instruction">
                                 <li>{instruction}</li>
