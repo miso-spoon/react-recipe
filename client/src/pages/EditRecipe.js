@@ -80,7 +80,7 @@ export class EditRecipe extends Component{
             <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
             <div>
                 <input type="file" onChange={this.fileSelectedHandler} />
-                <img src={this.state.file} width="50"/>
+                <img src={this.state.file} width="50%"/>
             </div>
             <br></br>
             <button type="button" class="btn btn-danger" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
