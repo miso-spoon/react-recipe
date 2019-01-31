@@ -10,7 +10,7 @@
     outline-style: solid; */
 }
 .desc{
-    width: 28%;
+    width: 20%;
     height: 100%;
     display: inline-block;
     /* outline-width: 1px;
@@ -18,16 +18,23 @@
     outline-style: solid; */
 }
 .mb-0{
-    width: 50%;
+    width: 58%;
+    text-align: center;
+    padding-top: 7px;
 }
-.row-title{
-
+/* .row-title{
     font-size: .8rem;
+} */
+.thumbnail{
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: grey;
 }
 .fa, .fas{
     padding-right: 5px;
 }
 .button-row{
+    padding-top: 6px;
     width: 100%;
     height: 50%;
 }
@@ -37,4 +44,9 @@
 .title{
     padding: 2px;
     font-family: 'Montserrat', sans-serif;
+}
+.card-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
 }

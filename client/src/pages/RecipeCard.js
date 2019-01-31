@@ -30,15 +30,18 @@ export class RecipeCard extends Component{
                 <div>
                     <div class="card-header" id="headingOne">
                         <div class="row">
+                            <div class="desc">  
+                                <img class="thumbnail" src={this.state.recipe.imgUrl} width="99%"/>
+                            </div>    
                             <h4 class="mb-0">
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
                                     {this.state.recipe.title}
                                 </button>
                             </h4>
-                            <div class="desc">
+                            {/* <div class="desc">
                                     <div class="row-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</div>
                                     <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
-                            </div>
+                            </div> */}
 
                             <div class="button-column">
                                 <div class="button-row">

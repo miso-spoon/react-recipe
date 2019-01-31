@@ -33,21 +33,40 @@
     margin: 0 auto;
 }
 .ingredients-title{
-    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
     padding-bottom: 1px;
     margin-bottom: 2px;
+    font-family: 'Nunito', sans-serif;
+}
+.ing-row{
+    padding-bottom: 15px;
+}
+.attr-row{
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+}
+.row-title{
+    /* display: inline-block;
+    width: 33%; */
+    font-size: .8rem;
+    margin: 0 auto;
 }
 .instruction-title{
     text-align: center;
-
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
     margin: 0 auto;
     padding-bottom: 5%;
+    font-family: 'Nunito', sans-serif;
 }
 .title-container{
     width: 50%;
@@ -63,24 +82,24 @@
 }
 ul{
     margin: 0 auto;
-    padding-left: 17%;
     padding: auto;
     text-align: left;
 }
 .icon1{
-    padding-left: 13px;
-    width: 70%;
+    width: 100%;
+    list-style-type: none;
 }
 .icon2{
     padding-left: 1px;
     width: 100%;
+    list-style-type: none;
 }
-
-
 li{
-    padding-left: 0;
     background-position: 100%;
 } 
 .in{
     padding-left: 20px;
+}
+hr{
+    width: 90%;
 }

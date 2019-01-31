@@ -13,19 +13,21 @@ export class Details extends Component{
     render() {
         return (
             <div class="detail-container">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="ing-row">
                         <h4 class="ingredients-title">
                             Ingredients:
                         </h4>
+                        <div class="detail-container">
                             <Ingredients i={this.state.recipe.ingredientList} />
-                    </div>
-                    <div class="col-md-6">
-                        <img class="foodpic" src={this.state.recipe.imgUrl} width="100%" />
-                    </div>
+                        </div>
                 </div>
+                <div class="attr-row">
+                    <div class="row-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</div>
+                    <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
+                    <div class="row-title"><i class="fas fa-hamburger"></i>4 to 6 Servings </div>
+                </div>
+                <hr></hr>
                 <div class="instruction-container">
-                    <hr></hr>
                     <div class="title-container">
                         <h3 class="instruction-title">Instructions:</h3>
                     </div>
