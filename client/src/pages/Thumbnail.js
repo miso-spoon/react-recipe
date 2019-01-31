@@ -9,7 +9,7 @@ export class Thumbnail extends Component{
 
 
     render() {
-        if (this.state.pic === null){
+        if (this.state.pic === null || this.state.pic === "null"){
             return(<img class="thumbnail" src={process.env.PUBLIC_URL + "/img/default-recipe-big.png"} />)
         }
         return(
