@@ -24,7 +24,7 @@ export class Details extends Component{
                 <div class="attr-row">
                     <div class="row-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</div>
                     <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
-                    <div class="row-title"><i class="fas fa-hamburger"></i>4 to 6 Servings </div>
+                    <div class="row-title"><i class="fas fa-hamburger"></i>{this.state.recipe.servings}</div>
                 </div>
                 <hr></hr>
                 <div class="instruction-container">

@@ -12,6 +12,7 @@ export class EditRecipe extends Component{
         title: '',
         cookTime: '',
         difficulty: '',
+        servings: '',
         ingredientList: '',
         instructions: '',
         file: null
@@ -24,6 +25,7 @@ export class EditRecipe extends Component{
             title: res.data.title,
             cookTime: res.data.cookTime,
             difficulty: res.data.difficulty,
+            servings: res.data.servings,
             ingredientList: res.data.ingredientList.join(','),
             instructions: res.data.instructions.join('\n'),
             file: res.data.imgUrl}))
@@ -47,6 +49,7 @@ export class EditRecipe extends Component{
             title: this.state.title,
             cookTime: this.state.cookTime,
             difficulty: this.state.difficulty,
+            servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
             imgUrl: this.state.file
@@ -57,40 +60,48 @@ export class EditRecipe extends Component{
     render() {
         
         return (
-        <form>
-            <Input 
+        <div class="form-container">
+            <h4>Edit Recipe:</h4>
+            <form>
+                <Input 
                     value={this.state.title}
                     onChange={this.handleInputChange}
                     name="title"
                     placeholder="Title (required)" 
                 />
-            <Input
+                <Input
                     value={this.state.cookTime}
                     onChange={this.handleInputChange}
                     name="cookTime"
                     placeholder="Cook Time (required)"
                 />
-            <Input
+                <Input
                     value={this.state.difficulty}
                     onChange={this.handleInputChange}
                     name="difficulty"
                     placeholder="Difficulty"
-            />
-            <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
-            <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
-            <div>
-                <input type="file" onChange={this.fileSelectedHandler} />
-                <img src={this.state.file} width="50%"/>
-            </div>
-            <br></br>
-            <button type="button" class="btn btn-danger" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
-            <FormBtn
+                />
+                <Input
+                    value={this.state.servings}
+                    onChange={this.handleInputChange}
+                    name="servings"
+                    placeholder="Servings"
+                />
+                <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
+                <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+                <div>
+                    <img src={this.state.file} width="30%"/>
+                    <input type="file" onChange={this.fileSelectedHandler} />   
+                </div>
+                <button type="button" class="btn btn-danger" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
+                <FormBtn
                     //disabled={!(this.state.cookTime && this.state.title)}
                     onClick={this.handleFormSubmit}
                     >
                     Submit Recipe
-            </FormBtn>
-        </form>
+                </FormBtn>
+            </form>
+        </div>
         );
     }
 

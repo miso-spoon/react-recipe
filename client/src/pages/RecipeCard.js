@@ -5,6 +5,7 @@ import './RecipeCard.css';
 import {Details} from './Details';
 import API from '../utils/API';
 import {EditRecipe} from './EditRecipe';
+import {Thumbnail} from './Thumbnail';
 
 export class RecipeCard extends Component{
     state = {
@@ -31,7 +32,7 @@ export class RecipeCard extends Component{
                     <div class="card-header" id="headingOne">
                         <div class="row">
                             <div class="desc">  
-                                <img class="thumbnail" src={this.state.recipe.imgUrl} width="99%"/>
+                                <Thumbnail pic={this.state.recipe.imgUrl} />
                             </div>    
                             <h4 class="mb-0">
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>

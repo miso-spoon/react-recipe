@@ -11,7 +11,7 @@ const recipeSchema = new Schema({
     difficulty: {
         type: String
     },
-    imageUrl: {
+    servings: {
         type: String
     },
     ingredientList: {

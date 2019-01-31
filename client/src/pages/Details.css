@@ -35,12 +35,12 @@
 .ingredients-title{
     width: 80%;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
     padding-bottom: 1px;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
     font-family: 'Nunito', sans-serif;
 }
 .ing-row{

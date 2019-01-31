@@ -25,11 +25,6 @@
 /* .row-title{
     font-size: .8rem;
 } */
-.thumbnail{
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: grey;
-}
 .fa, .fas{
     padding-right: 5px;
 }
