@@ -42,10 +42,15 @@
 }
 .instruction-title{
     text-align: center;
+
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
     margin: 0 auto;
+    padding-bottom: 5%;
+}
+.title-container{
+    width: 50%;
 }
 .instructions{
     font-family: 'Montserrat', sans-serif;

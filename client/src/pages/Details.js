@@ -21,12 +21,14 @@ export class Details extends Component{
                             <Ingredients i={this.state.recipe.ingredientList} />
                     </div>
                     <div class="col-md-6">
-                        <img class="foodpic" src="https://placekitten.com/260/234" width="100%" />
+                        <img class="foodpic" src={this.state.recipe.imgUrl} width="100%" />
                     </div>
                 </div>
                 <div class="instruction-container">
-                    <h3 class="instruction-title">Instructions:</h3>
                     <hr></hr>
+                    <div class="title-container">
+                        <h3 class="instruction-title">Instructions:</h3>
+                    </div>
                     <div class="instructions">
                         <ol class="in">
                         {this.state.recipe.instructions.map(instruction => (

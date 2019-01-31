@@ -19,12 +19,10 @@ const recipeSchema = new Schema({
     },
     instructions: {
         type: []
+    },
+    imgUrl: {
+        type: String
     }
-    // ,
-    // img: {
-    //     type: Buffer,
-    //     contentType: String
-    // }
 });
 
 const Recipe = mongoose.model('Recipe', recipeSchema);

@@ -12,17 +12,18 @@ class NewRecipe extends Component{
         cookTime: '',
         difficulty: '',
         ingredientList: '',
-        instructions: ''
-        // file: null,
+        instructions: '',
+        file: null,
         // img: null
     };
-    // fileSelectedHandler = event => {
-    //     console.log(event.target.files[0]);
-    //     this.setState({
-    //         fileSelected: event.target.files[0],
-    //         file: URL.createObjectURL(event.target.files[0])
-    //     })
-    // }
+    fileSelectedHandler = event => {
+        var x = URL.createObjectURL(event.target.files[0]);
+        // x = x.slice(5, x.length);
+        this.setState({
+            // fileSelected: event.target.files[0],
+            file: x
+        })
+    }
     handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
@@ -37,7 +38,7 @@ class NewRecipe extends Component{
             difficulty: this.state.difficulty,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            img: this.state.img
+            imgUrl: this.state.file
             })
             .then(res => this.loadRecipes())
             .catch(err => console.log(err));
@@ -68,6 +69,10 @@ class NewRecipe extends Component{
                         />
                         <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
                         <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+                        <div>
+                            <input type="file" onChange={this.fileSelectedHandler} />
+                            <img src={this.state.file} width="50" />
+                        </div>
                         <br></br>
                         <button type="button" class="btn btn-danger" value="Upload" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
                         <FormBtn

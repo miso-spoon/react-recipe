@@ -13,7 +13,8 @@ export class EditRecipe extends Component{
         cookTime: '',
         difficulty: '',
         ingredientList: '',
-        instructions: ''
+        instructions: '',
+        file: null
     };
     componentWillMount() {
         var id = window.location.href.slice(window.location.href.length-24, window.location.href.length);
@@ -24,9 +25,16 @@ export class EditRecipe extends Component{
             cookTime: res.data.cookTime,
             difficulty: res.data.difficulty,
             ingredientList: res.data.ingredientList.join(','),
-            instructions: res.data.instructions.join('\n')}));
+            instructions: res.data.instructions.join('\n'),
+            file: res.data.imgUrl}))
 
     };
+    fileSelectedHandler = event => {
+        var x = URL.createObjectURL(event.target.files[0]);
+        this.setState({
+            file: x
+        })
+    }
     handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
@@ -40,7 +48,8 @@ export class EditRecipe extends Component{
             cookTime: this.state.cookTime,
             difficulty: this.state.difficulty,
             ingredientList: this.state.ingredientList.split(','),
-            instructions: this.state.instructions.split('\n')
+            instructions: this.state.instructions.split('\n'),
+            imgUrl: this.state.file
             })
             .catch(err => console.log(err));
         this.props.history.push('/');
@@ -69,6 +78,10 @@ export class EditRecipe extends Component{
             />
             <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
             <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+            <div>
+                <input type="file" onChange={this.fileSelectedHandler} />
+                <img src={this.state.file} width="50"/>
+            </div>
             <br></br>
             <button type="button" class="btn btn-danger" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
             <FormBtn
