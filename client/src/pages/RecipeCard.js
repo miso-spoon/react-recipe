@@ -44,13 +44,13 @@ export class RecipeCard extends Component{
                                     <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
                             </div> */}
 
-                            <div class="button-column">
+                            {/* <div class="button-column">
                                 <div class="button-row">
                                     <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="far fa-times-circle"></i></button>
                                     <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="far fa-edit"></i></button>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                         <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
