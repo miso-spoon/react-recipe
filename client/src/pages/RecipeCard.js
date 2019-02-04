@@ -32,7 +32,7 @@ export class RecipeCard extends Component{
                     <div class="card-header" id="headingOne">
                         <div class="row">
                             <div class="desc">  
-                                <Thumbnail pic={this.state.recipe.imgUrl} />
+                                {/* <Thumbnail pic={this.state.recipe.imgUrl} /> */}
                             </div>    
                             <h4 class="mb-0">
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
