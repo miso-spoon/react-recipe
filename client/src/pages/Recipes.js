@@ -7,7 +7,7 @@ import {Button} from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import { RecipeCard } from './RecipeCard';
 import './Recipes.css';
-
+import { NewRecipe } from './NewRecipe';
 
 
 
@@ -55,10 +55,15 @@ class Recipes extends Component{
                     <div class="card">
                         <div class="card-header">
                             <h4 class="mb-1">
-                                <button class="btn btn-link title" type="button"  onClick={this.handleCreate}>
+                                <button class="btn btn-link collapsed title" type="button"  data-toggle="collapse" data-target="#add" aria-expanded="false" aria-controls="add">
                                     + Add New recipe
                                 </button>
                             </h4>
+                            <div id="add" class="collapse">
+                                <div class="card-body">
+                                    <NewRecipe />
+                                </div>
+                        </div>
                         </div>
                     </div>
                 </div>

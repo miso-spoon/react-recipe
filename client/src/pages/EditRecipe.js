@@ -8,7 +8,7 @@ import './NewRecipe.css';
 export class EditRecipe extends Component{
     state = {
         recipe: {},
-        id: '',
+        // id: '',
         title: '',
         cookTime: '',
         difficulty: '',
@@ -19,18 +19,28 @@ export class EditRecipe extends Component{
         selectedFile: null
     };
     componentWillMount() {
-        var id = window.location.href.slice(window.location.href.length-24, window.location.href.length);
-        API.getRecipe(id).then(res => this.setState({ 
-            id: id,
-            recipe: res.data,
-            title: res.data.title,
-            cookTime: res.data.cookTime,
-            difficulty: res.data.difficulty,
-            servings: res.data.servings,
-            ingredientList: res.data.ingredientList.join(','),
-            instructions: res.data.instructions.join('\n'),
-            file: res.data.imgUrl,
-            selectedFile: res.data.img}))
+        // var id = window.location.href.slice(window.location.href.length-24, window.location.href.length);
+        // API.getRecipe(id).then(res => this.setState({ 
+        //     id: id,
+        //     recipe: res.data,
+        //     title: res.data.title,
+        //     cookTime: res.data.cookTime,
+        //     difficulty: res.data.difficulty,
+        //     servings: res.data.servings,
+        //     ingredientList: res.data.ingredientList.join(','),
+        //     instructions: res.data.instructions.join('\n'),
+        //     file: res.data.imgUrl,
+        //     selectedFile: res.data.img}))
+        this.setState({ 
+            recipe: this.props.recipe,
+            title: this.props.recipe.title,
+            cookTime: this.props.recipe.cookTime,
+            difficulty: this.props.recipe.difficulty,
+            servings: this.props.recipe.servings,
+            ingredientList: this.props.recipe.ingredientList.join(','),
+            instructions: this.props.recipe.instructions.join('\n'),
+            file: this.props.recipe.imgUrl,
+            selectedFile: this.props.recipe.img})
 
     };
     fileSelectedHandler = event => {
@@ -67,7 +77,7 @@ export class EditRecipe extends Component{
         
         return (
         <div class="form-container">
-            <h4>Edit Recipe:</h4>
+            <h4 class="form-title">Edit Recipe:</h4>
             <form>
                 <Input 
                     value={this.state.title}
@@ -99,13 +109,13 @@ export class EditRecipe extends Component{
                     <img src={this.state.file} width="30%"/>
                     <input type="file" onChange={this.fileSelectedHandler} />   
                 </div>
-                <button type="button" class="btn btn-danger" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
-                <FormBtn
-                    //disabled={!(this.state.cookTime && this.state.title)}
+                <hr></hr>
+                <button class="btn btn-primary save"
+                    disabled={!(this.state.title)}
                     onClick={this.handleFormSubmit}
                     >
-                    Submit Recipe
-                </FormBtn>
+                    Save changes
+                </button>
             </form>
         </div>
         );

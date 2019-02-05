@@ -5,7 +5,7 @@ import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
 
-class NewRecipe extends Component{
+export class NewRecipe extends Component{
     state = {
         recipes: [],
         title: '',
@@ -50,7 +50,7 @@ class NewRecipe extends Component{
     render() {
         return (
                 <div class="form-container">
-                    <h4>New Recipe:</h4>
+                    <h4 class="form-title">New Recipe:</h4>
                     <form>
                         <Input 
                                 value={this.state.title}
@@ -82,13 +82,13 @@ class NewRecipe extends Component{
                             <img src={this.state.file} width="30%" />
                             <input type="file" onChange={this.fileSelectedHandler} />
                         </div>
-                        <button type="button" class="btn btn-danger" value="Upload" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
-                        <FormBtn
+                        <hr></hr>
+                        <button class="btn btn-primary save"
                                 disabled={!(this.state.title)}
                                 onClick={this.handleFormSubmit}
                                 >
                                 Submit Recipe
-                        </FormBtn>
+                        </button>
                     </form>
                  </div>
         );

@@ -20,11 +20,13 @@ export class RecipeCard extends Component{
         }))
     };
     render() {
-        if (this.state.edit === true){
-            return <Redirect to={'/edit/' + this.state.recipe._id} />
-        }
+        // if (this.state.edit === true){
+        //     return <Redirect to={'/edit/' + this.state.recipe._id} />
+        // }
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
+        var e1 = "edit" + this.state.recipe._id;
+        var e2 = "#edit" + this.state.recipe._id;
         return (
             <div class="accordion" id="accordionExample">
             <div class="card">
@@ -42,7 +44,7 @@ export class RecipeCard extends Component{
                             <div class="button-column">
                                 <div class="button-row">
                                     <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="far fa-times-circle"></i></button>
-                                    <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="far fa-edit"></i></button>
+                                    <button type="button" class="btn btn-outline-primary collapsed btn-sm" data-toggle="collapse" data-target={e2} aria-expanded="false" aria-controls={e1}><i class="far fa-edit"></i></button>
                                 </div>
 
                             </div> 
@@ -51,6 +53,11 @@ export class RecipeCard extends Component{
                         <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <Details recipe={this.state.recipe}/>
+                            </div>
+                        </div>
+                        <div id={e1} class="collapse">
+                            <div class="card-body">
+                                <EditRecipe recipe={this.state.recipe}/>
                             </div>
                         </div>
                     </div>
