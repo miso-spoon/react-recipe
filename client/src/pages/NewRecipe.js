@@ -84,7 +84,7 @@ class NewRecipe extends Component{
                         </div>
                         <button type="button" class="btn btn-danger" value="Upload" onClick={() => {this.props.history.push('/')}}><i class="fas fa-arrow-left"></i></button>
                         <FormBtn
-                                //disabled={!(this.state.cookTime && this.state.title)}
+                                disabled={!(this.state.title)}
                                 onClick={this.handleFormSubmit}
                                 >
                                 Submit Recipe

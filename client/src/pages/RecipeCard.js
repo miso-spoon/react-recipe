@@ -20,9 +20,9 @@ export class RecipeCard extends Component{
         }))
     };
     render() {
-        // if (this.state.edit === true){
-        //     return <Redirect to={'/edit/' + this.state.recipe._id} />
-        // }
+        if (this.state.edit === true){
+            return <Redirect to={'/edit/' + this.state.recipe._id} />
+        }
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
         return (
