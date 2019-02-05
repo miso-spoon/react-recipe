@@ -47,12 +47,12 @@ class Recipes extends Component{
 
     render() {
         return (
-                <div>
-                    <div classname="card-container">
+                <div class="app-container">
+                    <div class="card-container">
                         {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe}/>))}
                     </div>
                     
-                    {/* <div class="card">
+                    <div class="card">
                         <div class="card-header">
                             <h4 class="mb-1">
                                 <button class="btn btn-link title" type="button"  onClick={this.handleCreate}>
@@ -60,7 +60,7 @@ class Recipes extends Component{
                                 </button>
                             </h4>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
 
             
