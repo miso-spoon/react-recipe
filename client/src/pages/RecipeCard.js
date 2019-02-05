@@ -10,19 +10,11 @@ import {Thumbnail} from './Thumbnail';
 export class RecipeCard extends Component{
     state = {
             recipe: this.props.recipe,
-            edit: false
     }
-    handleEdit = () => {
-        // this.props.history.push('/edit/' + this.state.recipe._id);
-        // window.location.reload();
-        this.setState(()=> ({
-            edit: true
-        }))
-    };
+    handleDelete = () => {
+        this.props.deleteMethod(this.state.recipe._id)
+    }
     render() {
-        // if (this.state.edit === true){
-        //     return <Redirect to={'/edit/' + this.state.recipe._id} />
-        // }
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
         var e1 = "edit" + this.state.recipe._id;
@@ -43,7 +35,7 @@ export class RecipeCard extends Component{
                             </h4>
                             <div class="button-column">
                                 <div class="button-row">
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="far fa-times-circle"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {this.handleDelete()}}><i class="far fa-times-circle"></i></button>
                                     <button type="button" class="btn btn-outline-primary collapsed btn-sm" data-toggle="collapse" data-target={e2} aria-expanded="false" aria-controls={e1}><i class="far fa-edit"></i></button>
                                 </div>
 
@@ -57,7 +49,7 @@ export class RecipeCard extends Component{
                         </div>
                         <div id={e1} class="collapse">
                             <div class="card-body">
-                                <EditRecipe recipe={this.state.recipe}/>
+                                <EditRecipe recipe={this.state.recipe} parentMethod={() => {this.props.parentMethod()}}/>
                             </div>
                         </div>
                     </div>

@@ -43,9 +43,8 @@ export class NewRecipe extends Component{
             imgUrl: this.state.file,
             img: this.state.selectedFile
             })
-            .then(res => this.loadRecipes())
             .catch(err => console.log(err));
-        this.props.history.push('/');
+        this.props.parentMethod();
     };
     render() {
         return (

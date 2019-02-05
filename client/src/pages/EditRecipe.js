@@ -72,7 +72,8 @@ export class EditRecipe extends Component{
             img: this.state.selectedFile
             })
             .catch(err => console.log(err));
-        this.props.history.push('/');
+        this.props.parentMethod();
+        window.location.reload();
     };
     render() {
         

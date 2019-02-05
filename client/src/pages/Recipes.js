@@ -26,6 +26,7 @@ class Recipes extends Component{
                 // .then(res => console.log(res.data))
                 .then(res => this.setState({ recipes: res.data}))
                 .catch(err => console.log(err));
+        console.log("Hit");
 
     };
     handleInputChange = event => {
@@ -34,10 +35,6 @@ class Recipes extends Component{
 			[name]: value
 		});
 	};
-
-    handleCreate = () => {
-        this.props.history.push('/add');
-    };
     deleteRecipe = (id) => {
         API.deleteRecipe(id);
         this.setState({
@@ -49,7 +46,7 @@ class Recipes extends Component{
         return (
                 <div class="app-container">
                     <div class="card-container">
-                        {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe}/>))}
+                        {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
                     </div>
                     
                     <div class="card">
@@ -61,9 +58,10 @@ class Recipes extends Component{
                             </h4>
                             <div id="add" class="collapse">
                                 <div class="card-body">
-                                    <NewRecipe />
+                                    <NewRecipe parentMethod={() => {this.loadRecipes()}} />
                                 </div>
-                        </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
