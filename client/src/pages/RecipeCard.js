@@ -20,21 +20,21 @@ export class RecipeCard extends Component{
         }))
     };
     render() {
-        if (this.state.edit === true){
-            return <Redirect to={'/edit/' + this.state.recipe._id} />
-        }
+        // if (this.state.edit === true){
+        //     return <Redirect to={'/edit/' + this.state.recipe._id} />
+        // }
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
         return (
             <div class="accordion" id="accordionExample">
             <div class="card">
                 <div>
-                    <div class="card-header" id="headingOne">
+                    {/*<div class="card-header" id="headingOne">
                         <div class="row">
                             <div class="desc">  
                                 <Thumbnail pic={this.state.recipe.imgUrl} />
                             </div>    
-                            {/* <h4 class="mb-0">
+                            <h4 class="mb-0">
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
                                     {this.state.recipe.title}
                                 </button>
@@ -45,9 +45,9 @@ export class RecipeCard extends Component{
                                     <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="far fa-edit"></i></button>
                                 </div>
 
-                            </div> */}
+                            </div> 
                         </div>
-                    </div>
+                    </div>*/}
                         {/* <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample"> */}
                             <div class="card-body">
                                 <Details recipe={this.state.recipe}/>
