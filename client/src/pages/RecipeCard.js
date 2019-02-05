@@ -29,7 +29,7 @@ export class RecipeCard extends Component{
             <div class="accordion" id="accordionExample">
             <div class="card">
                 <div>
-                    {/*<div class="card-header" id="headingOne">
+                    <div class="card-header" id="headingOne">
                         <div class="row">
                             <div class="desc">  
                                 <Thumbnail pic={this.state.recipe.imgUrl} />
@@ -47,12 +47,12 @@ export class RecipeCard extends Component{
 
                             </div> 
                         </div>
-                    </div>*/}
-                        {/* <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample"> */}
+                    </div>
+                        <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <Details recipe={this.state.recipe}/>
                             </div>
-                        {/* </div> */}
+                        </div>
                     </div>
                 </div>
             </div>
