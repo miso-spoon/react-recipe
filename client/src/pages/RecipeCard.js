@@ -34,30 +34,25 @@ export class RecipeCard extends Component{
                             <div class="desc">  
                                 <Thumbnail pic={this.state.recipe.imgUrl} />
                             </div>    
-                            <h4 class="mb-0">
+                            {/* <h4 class="mb-0">
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
                                     {this.state.recipe.title}
                                 </button>
                             </h4>
-                            {/* <div class="desc">
-                                    <div class="row-title"><i class="fas fa-clock"></i>{this.state.recipe.cookTime}</div>
-                                    <div class="row-title"><i class="fa fa-exclamation-triangle"></i>{this.state.recipe.difficulty}</div>
-                            </div> */}
-
                             <div class="button-column">
                                 <div class="button-row">
                                     <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => {API.deleteRecipe(this.state.recipe._id)}}><i class="far fa-times-circle"></i></button>
                                     <button type="button" class="btn btn-outline-primary btn-sm" onClick={this.handleEdit}><i class="far fa-edit"></i></button>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
-                        <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        {/* <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample"> */}
                             <div class="card-body">
                                 <Details recipe={this.state.recipe}/>
                             </div>
-                        </div>
+                        {/* </div> */}
                     </div>
                 </div>
             </div>
