@@ -63,7 +63,7 @@ export class RecipeCard extends Component{
                     </div>
                 </div>
             </div>
-    );
+        );
     }
 }
 

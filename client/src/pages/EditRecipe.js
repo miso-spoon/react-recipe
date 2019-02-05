@@ -8,7 +8,7 @@ import './NewRecipe.css';
 export class EditRecipe extends Component{
     state = {
         recipe: {},
-        // id: '',
+        id: '',
         title: '',
         cookTime: '',
         difficulty: '',
@@ -33,6 +33,7 @@ export class EditRecipe extends Component{
         //     selectedFile: res.data.img}))
         this.setState({ 
             recipe: this.props.recipe,
+            id: this.props.recipe._id,
             title: this.props.recipe.title,
             cookTime: this.props.recipe.cookTime,
             difficulty: this.props.recipe.difficulty,
