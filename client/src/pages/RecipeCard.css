@@ -9,6 +9,9 @@
     outline-color: red;
     outline-style: solid; */
 }
+.title{
+    cursor: pointer;
+}
 .desc{
     width: 20%;
     height: 100%;
