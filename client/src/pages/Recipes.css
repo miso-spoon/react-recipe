@@ -1,6 +1,6 @@
 .app-container{
-    max-width: 450px;
-    display: inline-block;
+    max-width: 600px;
+    margin: 0 auto;
 }
 .card-container{
     width: 100%;
