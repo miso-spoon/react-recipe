@@ -10,4 +10,5 @@
 }
 .save, .form-container{
     font-family: 'Nunito', sans-serif;
+    float: right;
 }
