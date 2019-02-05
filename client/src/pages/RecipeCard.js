@@ -35,7 +35,7 @@ export class RecipeCard extends Component{
                                 {/* <Thumbnail pic={this.state.recipe.imgUrl} /> */}
                             </div>    
                             <h4 class="mb-0">
-                                <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
+                                <button class="btn btn-link" type="button">
                                     {this.state.recipe.title}
                                 </button>
                             </h4>
