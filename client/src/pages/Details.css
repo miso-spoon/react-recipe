@@ -58,6 +58,7 @@
     width: 33%; */
     font-size: .8rem;
     margin: 0 auto;
+    font-family: 'Nunito', sans-serif;
 }
 .instruction-title{
     text-align: center;
@@ -74,7 +75,8 @@
 .instructions{
     font-family: 'Montserrat', sans-serif;
     font-size: .80rem;
-    width: 100%;
+    width: 90%;
+    text-align: left;
     /* outline-width: 1px;
     outline-color: red;
     outline-style: solid; */
@@ -82,7 +84,6 @@
 }
 ul{
     margin: 0 auto;
-    padding: auto;
     text-align: left;
 }
 .icon1{

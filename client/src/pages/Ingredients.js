@@ -15,7 +15,7 @@ export class Ingredients extends Component{
     }
     render() {
         return(
-        <div class ="row">
+        <div class ="ing-table">
             <div class="ingredients">
                 <ul class="icon1">  
                     {this.state.right.map(i => (
