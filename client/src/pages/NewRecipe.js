@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
+import axios from 'axios';
 
 export class NewRecipe extends Component{
     state = {
@@ -16,7 +17,6 @@ export class NewRecipe extends Component{
         instructions: '',
         file: null,
         fileSelected: null
-        // img: null
     };
     fileSelectedHandler = event => {
         var x = URL.createObjectURL(event.target.files[0]);
@@ -31,6 +31,16 @@ export class NewRecipe extends Component{
 			[name]: value
 		});
     };
+    handleUpload = () => {
+        const data = new FormData()
+        data.append('file', this.state.selectedFile, this.state.selectedFile.name)
+        axios
+            .post("http://localhost:5000/upload", data)
+            .then(res => {
+            console.log(res.statusText)
+        })
+    
+    }
     handleFormSubmit = event => {
         event.preventDefault();
         API.saveRecipe({
@@ -40,8 +50,7 @@ export class NewRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.file,
-            img: this.state.selectedFile
+            imgUrl: this.state.fileSelected.name,
             })
             .catch(err => console.log(err));
         this.props.parentMethod();

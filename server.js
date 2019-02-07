@@ -16,13 +16,13 @@ app.post('/upload', (req, res, next) => {
 	let uploadFile = req.files.file
 	const fileName = req.files.file.name
 	uploadFile.mv(
-	  `${__dirname}/client/public/img/${fileName}`,
+	  `${__dirname}/client/public/${fileName}`,
 	  function (err) {
 		if (err) {
 		  return res.status(500).send(err)
 		}
 		res.json({
-		  file: `./client/public/img/${req.files.file.name}`,
+		  file: `./client/public/${req.files.file.name}`,
 		})
 	  },
 	)
