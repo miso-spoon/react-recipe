@@ -53,24 +53,24 @@ export class RecipeCard extends Component{
                                     <button type="button" class="btn btn-outline-primary collapsed btn-sm" data-toggle="collapse" data-target={e2} aria-expanded="false" aria-controls={e1}><i class="far fa-edit"></i></button>
                                 </div>
                                 <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"Delete Recipe?"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-                Are you sure you want to permanently delete this recipe?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={() => {this.handleDelete()}} color="primary" autoFocus>
-              Agree
-                                    </Button>
+                                    open={this.state.open}
+                                    onClose={this.handleClose}
+                                    aria-labelledby="alert-dialog-title"
+                                    aria-describedby="alert-dialog-description"
+                                    >
+                                    <DialogTitle id="alert-dialog-title">{"Delete Recipe?"}</DialogTitle>
+                                        <DialogContent>
+                                            <DialogContentText id="alert-dialog-description">
+                                                Are you sure you want to permanently delete this recipe?
+                                            </DialogContentText>
+                                        </DialogContent>
+                                        <DialogActions>
+                                        <Button onClick={this.handleClose} color="primary">
+                                            Disagree
+                                        </Button>
+                                        <Button onClick={() => {this.handleDelete()}} color="primary" autoFocus>
+                                            Agree
+                                        </Button>
                                     </DialogActions>
                                 </Dialog>
                             </div> 

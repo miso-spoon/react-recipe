@@ -18,9 +18,6 @@ class Recipes extends Component{
     componentDidMount() {
         this.loadRecipes();
     }
-    // componentDidUpdate() {
-    //     this.loadRecipes();
-    // }
     loadRecipes = () => {
         API.getRecipes()
                 // .then(res => console.log(res.data))

@@ -13,7 +13,7 @@ export class Thumbnail extends Component{
             return(<img class="thumbnail" src={process.env.PUBLIC_URL + "/img/default-recipe-big.png"} />)
         }
         return(
-            <img class="thumbnail" src={this.state.pic} />
+            <img class="thumbnail" src={process.env.PUBLIC_URL + "/img/" + this.state.pic} />
         )
     }
 

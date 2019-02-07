@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
+import axios from 'axios';
 
 export class EditRecipe extends Component{
     state = {
@@ -19,18 +20,6 @@ export class EditRecipe extends Component{
         selectedFile: null
     };
     componentWillMount() {
-        // var id = window.location.href.slice(window.location.href.length-24, window.location.href.length);
-        // API.getRecipe(id).then(res => this.setState({ 
-        //     id: id,
-        //     recipe: res.data,
-        //     title: res.data.title,
-        //     cookTime: res.data.cookTime,
-        //     difficulty: res.data.difficulty,
-        //     servings: res.data.servings,
-        //     ingredientList: res.data.ingredientList.join(','),
-        //     instructions: res.data.instructions.join('\n'),
-        //     file: res.data.imgUrl,
-        //     selectedFile: res.data.img}))
         this.setState({ 
             recipe: this.props.recipe,
             id: this.props.recipe._id,
@@ -46,8 +35,6 @@ export class EditRecipe extends Component{
     };
     fileSelectedHandler = event => {
         var x = URL.createObjectURL(event.target.files[0]);
-        console.log(typeof event.target.files[0])
-        console.log(event.target.files[0])
         this.setState({
             file: x,
             selectedFile: event.target.files[0]
@@ -59,6 +46,16 @@ export class EditRecipe extends Component{
 			[name]: value
 		});
     };
+    handleUpload = () => {
+        const data = new FormData()
+        data.append('file', this.state.selectedFile, this.state.selectedFile.name)
+        axios
+            .post("http://localhost:5000/upload", data)
+            .then(res => {
+            console.log(res.statusText)
+        })
+    
+    }
     handleFormSubmit = event => {
         event.preventDefault();
         API.updateRecipe(this.state.id, {
@@ -68,8 +65,7 @@ export class EditRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.file,
-            img: this.state.selectedFile
+            imgUrl: this.state.selectedFile.name
             })
             .catch(err => console.log(err));
         this.props.parentMethod();
@@ -110,6 +106,7 @@ export class EditRecipe extends Component{
                 <div>
                     <img src={this.state.file} width="30%"/>
                     <input type="file" onChange={this.fileSelectedHandler} />   
+                    <button class="btn-primary" type="button" onClick={this.handleUpload}>Upload</button>
                 </div>
                 <hr></hr>
                 <button class="btn btn-primary save"
