@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './Thumbnail.css'
 
 export class Thumbnail extends Component{
@@ -7,9 +8,8 @@ export class Thumbnail extends Component{
     }
     
     render() {
-        console.log(process.env.PUBLIC_URL + "/uploads/" + this.state.pic);
         return(
-            <img class="thumbnail" src={process.env.PUBLIC_URL + "/uploads/" + this.state.pic}/>
+            <img class="thumbnail" src={axios.get('api/uploads/' + this.state.pic)}/>
         )
     }
 

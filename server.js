@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, path.resolve(__dirname, './client/public/uploads'))
+		cb(null, path.resolve(__dirname, './client/assets/uploads'))
 	},
 	filename: function (req, file, callback) {
 		crypto.pseudoRandomBytes(16, function(err, raw) {
@@ -33,7 +33,6 @@ app.post('/api/uploads', upload.single('file'), (req, res) => {
 	  return res.send({
 		success: false
 	  });
-  
 	} else {
 	  console.log('file received');
 	  return res.send({
@@ -43,6 +42,21 @@ app.post('/api/uploads', upload.single('file'), (req, res) => {
 	}
 });
 
+app.get('/api/uploads/:id', function (req, res) {
+	var file = req.params.id
+	var content;
+	console.log(file)
+	fs.readFile('./client/assets/uploads/' + file, function read(err, data) {
+		if (err) {
+			throw err;
+		}
+		content = data;
+	
+		// Invoke the next step here however you like
+		console.log(content);   // Put all of the code here (not the best solution)        // Or put the next step in a function and invoke it
+	});
+	res.send(content);
+})
 
 app.use(routes);
 

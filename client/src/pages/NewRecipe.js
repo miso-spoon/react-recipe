@@ -33,14 +33,14 @@ export class NewRecipe extends Component{
     };
     handleUpload = () => {
         const data = new FormData()
-        data.append('file', this.state.selectedFile, this.state.selectedFile.name)
-        axios
-            .post("http://localhost:5000/upload", data)
-            .then(res => {
-            console.log(res.statusText)
+        data.append('file', this.state.selectedFile)
+        axios.post('/api/uploads/', data).then((res) => {
+            this.setState({
+                fileSelected: res.data.path
+            })
         })
-    
     }
+    
     handleFormSubmit = event => {
         event.preventDefault();
         API.saveRecipe({
@@ -50,7 +50,7 @@ export class NewRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.fileSelected.name,
+            imgUrl: this.state.fileSelected,
             })
             .catch(err => console.log(err));
         this.props.parentMethod();
@@ -89,6 +89,7 @@ export class NewRecipe extends Component{
                         <div>
                             <img src={this.state.file} width="30%" />
                             <input type="file" onChange={this.fileSelectedHandler} />
+                            <button class="btn-primary" type="button" onClick={this.handleUpload}>Upload</button>
                         </div>
                         <hr></hr>
                         <button class="btn btn-primary save"

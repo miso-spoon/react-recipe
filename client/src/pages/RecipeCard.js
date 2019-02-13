@@ -26,6 +26,7 @@ export class RecipeCard extends Component{
     handleDelete = () => {
         this.props.deleteMethod(this.state.recipe._id)
         this.setState({ open: false });
+        window.location.reload();
     }
     render() {
         var c1 = "collapse" + this.state.recipe._id;
