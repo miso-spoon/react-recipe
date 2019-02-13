@@ -19,5 +19,8 @@ export default {
 	},
 	updateRecipe: function(id, recipeData) {
 		return axios.put('/api/recipe/' + id, recipeData);
+	},
+	uploadRecipe: function(id, data) {
+		return axios.post('/api/recipe/' + id, data);
 	}
 };

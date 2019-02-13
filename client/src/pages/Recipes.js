@@ -23,8 +23,6 @@ class Recipes extends Component{
                 // .then(res => console.log(res.data))
                 .then(res => this.setState({ recipes: res.data}))
                 .catch(err => console.log(err));
-        console.log("Hit");
-
     };
     handleInputChange = event => {
 		const { name, value } = event.target;

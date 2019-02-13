@@ -48,14 +48,14 @@ export class EditRecipe extends Component{
     };
     handleUpload = () => {
         const data = new FormData()
-        data.append('file', this.state.selectedFile, this.state.selectedFile.name)
-        axios
-            .post("http://localhost:5000/upload", data)
-            .then(res => {
-            console.log(res.statusText)
+        data.append('file', this.state.selectedFile)
+        axios.post('/api/uploads/', data).then((res) => {
+            this.setState({
+                selectedFile: res.data.path
+            })
         })
-    
     }
+    
     handleFormSubmit = event => {
         event.preventDefault();
         API.updateRecipe(this.state.id, {
@@ -65,7 +65,7 @@ export class EditRecipe extends Component{
             servings: this.state.servings,
             ingredientList: this.state.ingredientList.split(','),
             instructions: this.state.instructions.split('\n'),
-            imgUrl: this.state.selectedFile.name
+            imgUrl: this.state.selectedFile
             })
             .catch(err => console.log(err));
         this.props.parentMethod();
@@ -105,7 +105,7 @@ export class EditRecipe extends Component{
                 <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
                 <div>
                     <img src={this.state.file} width="30%"/>
-                    <input type="file" onChange={this.fileSelectedHandler} />   
+                    <input type="file" name="recfile" onChange={this.fileSelectedHandler} />   
                     <button class="btn-primary" type="button" onClick={this.handleUpload}>Upload</button>
                 </div>
                 <hr></hr>

@@ -10,6 +10,7 @@ router
     .route('/:id')
     .get(recipeController.findById)
     .put(recipeController.update)
+    // .post(recipeController.upload)
     .delete(recipeController.remove);
 
 module.exports = router;

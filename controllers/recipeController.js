@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe');
+var fs = require('fs');
 
 module.exports = {
 	findAll: function(req, res) {
@@ -21,6 +22,11 @@ module.exports = {
 			.then(recipe => res.json(recipe))
 			.catch(err => res.status(422).json(err));
 	},
+	// upload: function(req, res) {
+	// 	Recipe.findOneAndUpdate({ _id: req.params.id }, { imgUrl: req.files.file.data.toString('base64')})
+	// 		.then(recipe => res.json(recipe))
+	// 		.catch(err => res.status(422).json(err));
+	// },
 	remove: function(req, res) {
 		Recipe.findById({ _id: req.params.id })
 			.then(recipe => recipe.remove())
