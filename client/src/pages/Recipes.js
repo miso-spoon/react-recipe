@@ -8,40 +8,56 @@ import { Redirect } from 'react-router';
 import { RecipeCard } from './RecipeCard';
 import './Recipes.css';
 import { NewRecipe } from './NewRecipe';
+import { Header } from './Header';
 
 
 
 class Recipes extends Component{
     state = {
-        recipes: []
+        recipes: [],
+        filteredRecipes: []
     };
     componentDidMount() {
         this.loadRecipes();
     }
-    loadRecipes = () => {
+    filterRecipes = (keyword) => {
+        let filteredRecipes = this.state.recipes
+        filteredRecipes = filteredRecipes.filter((recipe) => {
+            let recipeName = recipe.title.toLowerCase()
+            return recipeName.indexOf(keyword.toLowerCase()) !== -1
+        })
+        this.setState({
+            filteredRecipes
+        })
+        console.log(filteredRecipes)
+    }
+    loadRecipes = () => { 
         API.getRecipes()
-                // .then(res => console.log(res.data))
-                .then(res => this.setState({ recipes: res.data}))
-                .catch(err => console.log(err));
+                .then(this.refreshList)
     };
     handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
-	};
+    };
+    refreshList = res => this.setState({recipes: res.data,
+                                        filteredRecipes: res.data})
     deleteRecipe = (id) => {
         API.deleteRecipe(id);
         this.setState({
-            recipes: this.state.recipes.filter(recipe => recipe._id !== id)
+            recipes: this.state.recipes.filter(recipe => recipe._id !== id),
+            filteredRecipes: this.state.filteredRecipes.filter(recipe => recipe._id !== id)
         })
+        this.loadRecipes();
     }
 
     render() {
         return (
                 <div class="app-container">
+                    <Header parentMethod={this.filterRecipes}/>
                     <div class="card-container">
-                        {this.state.recipes.map(recipe => (<RecipeCard recipe={recipe} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
+                        {this.state.filteredRecipes.map((recipe) => (<RecipeCard key={recipe._id} recipe={recipe} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
                     </div>
                     
                     <div class="card">
@@ -57,6 +73,11 @@ class Recipes extends Component{
                                 </div>
                             </div>
                             
+                        </div>
+                    </div>
+                    <div class="recipe-footer">
+                        <div class="footer-info">
+                            miso-spoon@github for the source code
                         </div>
                     </div>
                 </div>

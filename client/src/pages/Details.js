@@ -7,9 +7,7 @@ export class Details extends Component{
         recipe: this.props.recipe
     }
     componentDidMount(){
-        console.log(this.state.recipe._id);
     }
-
     render() {
         return (
             <div class="detail-container">

@@ -8,6 +8,28 @@
     /* outline-style: solid;
     outline-color: red; */
 }
+
+.recipe-header{
+    background-color: #e3f2fd;
+    font-family: Montserrat,sans-serif
+}
+.recipe-footer{
+    height: 60px;
+    width: 100%;
+    background-color: #e3f2fd;
+    font-family: Montserrat,sans-serif
+}
+.footer-info{
+    float: right;
+    padding-top: 40px;
+    font-family: Montserrat,sans-serif;
+    font-size: 0.8rem;
+}
+.mr-sm-2{
+    width: 40%;
+    float: right;
+}
+
 .mb-1{
     width: 100%;
     text-align: center;

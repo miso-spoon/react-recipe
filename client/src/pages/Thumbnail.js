@@ -9,6 +9,7 @@ export class Thumbnail extends Component{
     }
     
     componentDidMount(){
+        if(this.state.pic)
         this.loadPhotos().then(res => this.setState({
             image: res.data
         }))
@@ -17,14 +18,21 @@ export class Thumbnail extends Component{
         return axios.get('api/uploads/' + this.state.pic)
     }
     render() {
-        while(this.state.image == ''){
+        if(this.state.pic == null){
             return (
-                <img class="loading" src="/319.gif" />
+                <img class="thumbnail" src="/default-recipe-big.png" />
+            )
+        }
+        else{
+            while(this.state.image == ''){
+                return (
+                    <img class="loading" src="/319.gif" />
+                )
+            }
+            return(
+                <img class="thumbnail" src={`data:image/jpeg;base64,${this.state.image}`}/>
             )
         };
-        return(
-            <img class="thumbnail" src={`data:image/jpeg;base64,${this.state.image}`}/>
-        )
     }
 
 }

@@ -27,7 +27,6 @@ app.use(express.static('client/build'));
 var upload = multer({ storage: storage });
 
 app.post('/api/uploads', upload.single('file'), (req, res) => {
-	console.log(req.file);
 	if (!req.file) {
 	  console.log("No file received");
 	  return res.send({
@@ -45,14 +44,11 @@ app.post('/api/uploads', upload.single('file'), (req, res) => {
 app.get('/api/uploads/:id', function (req, res) {
 	var file = req.params.id
 	var content;
-	console.log(file)
 	var s = fs.readFile('./client/assets/uploads/' + file, function read(err, data) {
 		if (err) {
 			throw err;
 		}
-		console.log("Data from read file: " + data)
 		content = new Buffer(data, 'binary').toString('base64');
-		console.log("Data from content: " + content)
 		res.send(content)
 		// Invoke the next step here however you like
 		// console.log(content);   // Put all of the code here (not the best solution)        // Or put the next step in a function and invoke it
