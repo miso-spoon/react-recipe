@@ -26,7 +26,7 @@ export class Thumbnail extends Component{
         else{
             while(this.state.image == ''){
                 return (
-                    <img class="loading" src="/319.gif" />
+                    <img class="loading" src="/default-recipe-big.png" />
                 )
             }
             return(
