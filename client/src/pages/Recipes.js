@@ -15,7 +15,8 @@ import { Header } from './Header';
 class Recipes extends Component{
     state = {
         recipes: [],
-        filteredRecipes: []
+        filteredRecipes: [],
+        cart: []
     };
     componentDidMount() {
         this.loadRecipes();
@@ -51,13 +52,27 @@ class Recipes extends Component{
         })
         this.loadRecipes();
     }
-
+    addToCart = (ingredients) => {
+        console.log(ingredients)
+        this.setState({
+            cart: this.state.cart.concat(ingredients)
+        })
+    }
+    displayCart = () => {
+        return (this.state.cart)
+    }
+    clearCart = () => {
+        this.setState({
+            cart: []
+        })
+    }
     render() {
         return (
+            <div>
+                <Header parentMethod={this.filterRecipes} displayCart={this.displayCart} clearCart={() => {this.clearCart()}}/>
                 <div class="app-container">
-                    <Header parentMethod={this.filterRecipes}/>
                     <div class="card-container">
-                        {this.state.filteredRecipes.map((recipe) => (<RecipeCard key={recipe._id} recipe={recipe} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
+                        {this.state.filteredRecipes.map((recipe) => (<RecipeCard key={recipe._id} recipe={recipe} addToCart={(x) => {this.addToCart(x)}} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
                     </div>
                     
                     <div class="card">
@@ -75,12 +90,13 @@ class Recipes extends Component{
                             
                         </div>
                     </div>
-                    <div class="recipe-footer">
-                        <div class="footer-info">
-                            miso-spoon@github for the source code
-                        </div>
+                </div>
+                <div class="recipe-footer">
+                    <div class="footer-info">
+                        miso-spoon@github for the source code
                     </div>
                 </div>
+            </div>
 
             
         );

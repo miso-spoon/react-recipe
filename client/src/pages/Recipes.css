@@ -25,13 +25,21 @@
     font-family: Montserrat,sans-serif;
     font-size: 0.8rem;
 }
-.mr-sm-2{
-    width: 40%;
-    float: right;
-}
 
 .mb-1{
     width: 100%;
     text-align: center;
 
+}
+.active{
+    display: inline-block;
+}
+.navflex{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+.mr-sm-2{
+    width: 33%;
 }

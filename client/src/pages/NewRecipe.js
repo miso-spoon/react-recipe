@@ -5,6 +5,7 @@ import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
 import axios from 'axios';
+import TextareaAutosize from 'react-autosize-textarea';
 
 export class NewRecipe extends Component{
     state = {
@@ -85,7 +86,7 @@ export class NewRecipe extends Component{
                                 placeholder="Servings"
                         />
                         <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
-                        <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+                        <TextareaAutosize defaultValue={this.state.instructions} class="ins-text" onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
                         <div>
                             <img src={this.state.file} width="30%" />
                             <input type="file" onChange={this.fileSelectedHandler} />

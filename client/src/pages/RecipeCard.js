@@ -28,6 +28,9 @@ export class RecipeCard extends Component{
         this.setState({ open: false });
         this.props.parentMethod();
     }
+    handleCart = () => {
+        this.props.addToCart(this.state.recipe.ingredientList)
+    }
     render() {
         var c1 = "collapse" + this.state.recipe._id;
         var c2 = "#collapse" + this.state.recipe._id;
@@ -51,7 +54,9 @@ export class RecipeCard extends Component{
                             <div class="button-column">
                                 <div class="button-row">
                                     <button type="button" class="btn btn-outline-danger btn-sm" onClick={this.handleClickOpen}><i class="far fa-times-circle"></i></button>
+                                    <button type="button" class="btn btn-outline-warning btn-sm" onClick={this.handleCart}><i class="fas fa-cart-plus"></i></button>
                                     <button type="button" class="btn btn-outline-primary collapsed btn-sm" data-toggle="collapse" data-target={e2} aria-expanded="false" aria-controls={e1}><i class="far fa-edit"></i></button>
+                                    
                                 </div>
                                 <Dialog
                                     open={this.state.open}

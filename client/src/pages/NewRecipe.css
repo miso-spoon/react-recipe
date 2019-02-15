@@ -1,5 +1,9 @@
-.ing-text, .ins-text{
+.ins-text{
     width: 100%;
+}
+.ing-text{
+    width: 100%;
+    height: 100px;
 }
 .form-container{
     display: block;

@@ -46,10 +46,12 @@ app.get('/api/uploads/:id', function (req, res) {
 	var content;
 	var s = fs.readFile('./client/assets/uploads/' + file, function read(err, data) {
 		if (err) {
-			throw err;
+			console.log(err);
 		}
+		else {
 		content = new Buffer(data, 'binary').toString('base64');
 		res.send(content)
+		}
 		// Invoke the next step here however you like
 		// console.log(content);   // Put all of the code here (not the best solution)        // Or put the next step in a function and invoke it
 	});

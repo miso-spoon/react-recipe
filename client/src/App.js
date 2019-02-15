@@ -5,6 +5,7 @@ import NewRecipe from './pages/NewRecipe';
 import EditRecipe from './pages/EditRecipe';
 import RecipeCard from './pages/RecipeCard';
 import Details from './pages/Details';
+import Cart from './pages/Cart';
 import './App.css';
 import { Nav } from 'react-bootstrap';
 
@@ -14,9 +15,7 @@ const App = () => (
 			<Nav />
 			<Switch>
 				<Route exact path="/" component={Recipes} />
-				<Route exact path="/recipe" component={Recipes} />
-				<Route exact path="/add" component={NewRecipe} />
-				<Route exact path="/edit/:id" component={EditRecipe} />
+				<Route exact path="/cart" component={Cart} />
 			</Switch>
 		</div>
 	</Router>

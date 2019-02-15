@@ -18,21 +18,14 @@ export class Thumbnail extends Component{
         return axios.get('api/uploads/' + this.state.pic)
     }
     render() {
-        if(this.state.pic == null){
+        while(this.state.image == '' || this.state.pic == null){
             return (
                 <img class="thumbnail" src="/default-recipe-big.png" />
             )
         }
-        else{
-            while(this.state.image == ''){
-                return (
-                    <img class="loading" src="/default-recipe-big.png" />
-                )
-            }
-            return(
+        return(
                 <img class="thumbnail" src={`data:image/jpeg;base64,${this.state.image}`}/>
-            )
-        };
+        )
     }
 
 }

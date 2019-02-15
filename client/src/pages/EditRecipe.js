@@ -5,6 +5,7 @@ import { Input } from '../components/Form/Input.js';
 import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
 import axios from 'axios';
+import TextareaAutosize from 'react-autosize-textarea';
 
 export class EditRecipe extends Component{
     state = {
@@ -17,7 +18,8 @@ export class EditRecipe extends Component{
         ingredientList: '',
         instructions: '',
         file: null,
-        selectedFile: null
+        selectedFile: null,
+        insCount: null,
     };
     componentWillMount() {
         this.setState({ 
@@ -30,7 +32,8 @@ export class EditRecipe extends Component{
             ingredientList: this.props.recipe.ingredientList.join(','),
             instructions: this.props.recipe.instructions.join('\n'),
             file: this.props.recipe.imgUrl,
-            selectedFile: this.props.recipe.img})
+            selectedFile: this.props.recipe.img,
+            insCount: this.props.recipe.instructions.length})
 
     };
     fileSelectedHandler = event => {
@@ -72,7 +75,6 @@ export class EditRecipe extends Component{
         window.location.reload();
     };
     render() {
-        
         return (
         <div class="form-container">
             <h4 class="form-title">Edit Recipe:</h4>
@@ -102,7 +104,7 @@ export class EditRecipe extends Component{
                     placeholder="Servings"
                 />
                 <textarea class="ing-text" value={this.state.ingredientList} onChange={this.handleInputChange} name="ingredientList" placeholder="Ingredients (Separate each with a comma)"/>
-                <textarea class="ins-text" value={this.state.instructions} onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
+                <TextareaAutosize rows={this.state.insCount} defaultValue={this.state.instructions} class="ins-text" onChange={this.handleInputChange} name="instructions" placeholder="Instructions (Separate each with a new line!)"/>
                 <div>
                     <img src={this.state.file} width="30%"/>
                     <input type="file" name="recfile" onChange={this.fileSelectedHandler} />   
