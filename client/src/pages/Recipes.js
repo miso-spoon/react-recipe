@@ -76,7 +76,7 @@ class Recipes extends Component{
                         {this.state.filteredRecipes.map((recipe) => (<RecipeCard key={recipe._id} recipe={recipe} addToCart={(x) => {this.addToCart(x)}} parentMethod={() => {this.loadRecipes()}} deleteMethod={(id) => {this.deleteRecipe(id)}} />))}
                     </div>
                     
-                    <div class="card">
+                    <div class="card rounded">
                         <div class="card-header">
                             <h4 class="mb-1">
                                 <button class="btn btn-link collapsed title" type="button"  data-toggle="collapse" data-target="#add" aria-expanded="false" aria-controls="add">

@@ -11,11 +11,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import StarRatingComponent from 'react-star-rating-component';
 
 export class RecipeCard extends Component{
     state = {
             recipe: this.props.recipe,
-            open: false
+            open: false,
+            rating: 3
     };
     handleClose = () => {
         this.setState({ open: false });
@@ -30,6 +32,9 @@ export class RecipeCard extends Component{
     }
     handleCart = () => {
         this.props.addToCart(this.state.recipe.ingredientList)
+    }
+    onStarClick(nextValue, prevValue, name) {
+        this.setState({rating: nextValue});
     }
     render() {
         var c1 = "collapse" + this.state.recipe._id;
@@ -77,6 +82,12 @@ export class RecipeCard extends Component{
                                 <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
                                     {this.state.recipe.title}
                                 </button>
+                                {/* <StarRatingComponent 
+                                    name="rate1" 
+                                    starCount={5}
+                                    value={this.state.rating}
+                                    onStarClick={this.onStarClick.bind(this)}
+                                /> */}
                             </h4>
                         </div>
                     </div>

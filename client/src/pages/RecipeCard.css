@@ -39,10 +39,15 @@
     width: 33%;
 }
 .title{
+    width: 100%;
     white-space: normal;
     padding: 2px;
     font-family: 'Montserrat', sans-serif;
     overflow-wrap: break-word;
+}
+StarRatingComponent{
+    margin-bottom: 5px;
+    float: bottom;
 }
 .card-header{
     padding-top: 5px;
