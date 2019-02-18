@@ -1,5 +1,5 @@
 .app-container{
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 .card-container{
@@ -41,5 +41,13 @@
     margin: 0;
 }
 .mr-sm-2{
-    width: 33%;
+    width: 100%;
+}
+.cart{
+    font-family: Montserrat,sans-serif
+}
+.cart-container{
+    padding-top: 5%;
+    width: 70%;
+    margin: auto;
 }

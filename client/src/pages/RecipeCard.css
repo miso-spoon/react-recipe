@@ -21,7 +21,7 @@
 .mb-0{
     width: 70%;
     text-align: center;
-    height: 50%;
+    margin-top: 15px;
 }
 /* .row-title{
     font-size: .8rem;
@@ -39,8 +39,10 @@
     width: 33%;
 }
 .title{
+    white-space: normal;
     padding: 2px;
     font-family: 'Montserrat', sans-serif;
+    overflow-wrap: break-word;
 }
 .card-header{
     padding-top: 5px;

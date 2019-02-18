@@ -7,9 +7,9 @@ function NoGroceries () {
     
 }
 function ShowGroceries (props) {
-    return(<ul>
+    return(<ul class="cart">
             {props.cart.map((ing) => (
-            <li>{ing}</li>
+            <li >{ing}</li>
             ))}
           </ul>);
 }
@@ -24,22 +24,19 @@ export class Cart extends Component{
         })
     }
     render() {
-        // let groceries;
-        // if (this.state.cart.length == 0) {
-        //     groceries = <NoGroceries/>
-        // } else {
-        //     groceries = <ShowGroceries cart={this.state.cart}/>
-        // }
         return(
             <div class="cart">
                 <nav class="navbar navbar-light recipe-header">
                     <a class="navbar-brand"> MomoBooks           
                     </a>
-                    <a class="nav-item nav-link" href="/">Home</a>
+                    <a class="nav-item nav-link" href="/">Home <i class="fas fa-arrow-right"></i></a>
                 </nav>
                 <div class="app-container">
-                    <h3>Grocery Cart:</h3>
-                    {this.state.cart.length == 0 ? <NoGroceries /> : <ShowGroceries cart={this.state.cart} />}
+                    <div class="cart-container">
+                    <h3 class="cart">Grocery List:</h3>
+                    <hr></hr>
+                        {this.state.cart.length == 0 ? <NoGroceries /> : <ShowGroceries cart={this.state.cart} />}
+                    </div>
                 </div>
             </div>
         )
