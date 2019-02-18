@@ -51,3 +51,8 @@
     width: 70%;
     margin: auto;
 }
+.card{
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #dee2e6;
+}
