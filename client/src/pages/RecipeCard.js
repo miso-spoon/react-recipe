@@ -44,19 +44,11 @@ export class RecipeCard extends Component{
                         <div class="row">
                             <div class="desc">  
                                 <Thumbnail pic={this.state.recipe.imgUrl} />
-                            </div>    
-                            <h4 class="mb-0">
-                                <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
-                                    {this.state.recipe.title}
-                                </button>
-                                
-                            </h4>
-                            <div class="button-column">
+                                <div class="button-column">
                                 <div class="button-row">
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={this.handleClickOpen}><i class="far fa-times-circle"></i></button>
-                                    <button type="button" class="btn btn-outline-warning btn-sm" onClick={this.handleCart}><i class="fas fa-cart-plus"></i></button>
                                     <button type="button" class="btn btn-outline-primary collapsed btn-sm" data-toggle="collapse" data-target={e2} aria-expanded="false" aria-controls={e1}><i class="far fa-edit"></i></button>
-                                    
+                                    <button type="button" class="btn btn-outline-success btn-sm" onClick={this.handleCart}><i class="fas fa-cart-plus"></i></button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm" onClick={this.handleClickOpen}><i class="far fa-times-circle"></i></button>   
                                 </div>
                                 <Dialog
                                     open={this.state.open}
@@ -80,6 +72,12 @@ export class RecipeCard extends Component{
                                     </DialogActions>
                                 </Dialog>
                             </div> 
+                            </div>    
+                            <h4 class="mb-0">
+                                <button class="btn btn-link collapsed title" type="button" data-toggle="collapse" data-target={c2} aria-expanded="false" aria-controls={c1}>
+                                    {this.state.recipe.title}
+                                </button>
+                            </h4>
                         </div>
                     </div>
                         <div id={c1} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">

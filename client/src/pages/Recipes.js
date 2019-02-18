@@ -53,12 +53,13 @@ class Recipes extends Component{
         this.loadRecipes();
     }
     addToCart = (ingredients) => {
-        console.log(ingredients)
+        let value = this.state.cart.concat(ingredients)
         this.setState({
-            cart: this.state.cart.concat(ingredients)
+            cart: value
         })
     }
     displayCart = () => {
+        console.log("Cart displayed: " + this.state.cart)
         return (this.state.cart)
     }
     clearCart = () => {
