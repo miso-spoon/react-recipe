@@ -6,6 +6,9 @@ import { FormBtn } from '../components/Form/FormBtn.js';
 import './NewRecipe.css';
 import axios from 'axios';
 import TextareaAutosize from 'react-autosize-textarea';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 export class EditRecipe extends Component{
     state = {
@@ -20,7 +23,17 @@ export class EditRecipe extends Component{
         file: null,
         selectedFile: null,
         insCount: null,
+        open: false
     };
+    handleAddClick = () => {
+        this.setState({ open: true });
+    };
+    handleAddClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        this.setState({ open: false });
+    }; 
     componentWillMount() {
         this.setState({ 
             recipe: this.props.recipe,
@@ -72,7 +85,7 @@ export class EditRecipe extends Component{
             })
             .catch(err => console.log(err));
         this.props.parentMethod();
-        window.location.reload();
+        this.handleAddClick();
     };
     render() {
         return (
@@ -117,6 +130,30 @@ export class EditRecipe extends Component{
                     >
                     Save changes
                 </button>
+                <Snackbar
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                    }}
+                                    open={this.state.open}
+                                    autoHideDuration={1500}
+                                    onClose={this.handleAddClose}
+                                    className="snack-grocery"
+                                    ContentProps={{
+                                        'aria-describedby': 'message-id',
+                                    }}
+                                    message={<span id="message-id"><i class="fas fa-plus"></i>Recipe edited successfully!</span>}
+                                    action={[
+                                        <IconButton
+                                        key="close"
+                                        aria-label="Close"
+                                        color="inherit"
+                                        onClick={this.handleAddClose}
+                                        >
+                                        <CloseIcon />
+                                        </IconButton>,
+                                    ]}
+                                />
             </form>
         </div>
         );

@@ -12,13 +12,40 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import StarRatingComponent from 'react-star-rating-component';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 export class RecipeCard extends Component{
     state = {
             recipe: this.props.recipe,
             open: false,
-            rating: 3
+            rating: 3,
+            groceryOpen: false,
+            deleteOpen: false
     };
+    handleGroceryClick = () => {
+        this.setState({ groceryOpen: true });
+    };
+    handleGroceryClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        this.setState({ groceryOpen: false });
+    }; 
+    handleDeleteClick = () => {
+        this.setState({ deleteOpen: true });
+    };
+    handleDeleteClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        this.setState({ deleteOpen: false });
+    }; 
+    
     handleClose = () => {
         this.setState({ open: false });
     };
@@ -27,11 +54,13 @@ export class RecipeCard extends Component{
     };
     handleDelete = () => {
         this.props.deleteMethod(this.state.recipe._id)
-        this.setState({ open: false });
+        this.setState({ open: false,
+                        deleteOpen: true });
         this.props.parentMethod();
     }
     handleCart = () => {
         this.props.addToCart(this.state.recipe.ingredientList)
+        this.handleGroceryClick();
     }
     onStarClick(nextValue, prevValue, name) {
         this.setState({rating: nextValue});
@@ -76,6 +105,54 @@ export class RecipeCard extends Component{
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
+                                <Snackbar
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                    }}
+                                    open={this.state.groceryOpen}
+                                    autoHideDuration={1500}
+                                    onClose={this.handleGroceryClose}
+                                    className="snack-grocery"
+                                    ContentProps={{
+                                        'aria-describedby': 'message-id',
+                                    }}
+                                    message={<span id="message-id"><i class="fas fa-cart-plus"></i>Recipe ingredients added to cart!</span>}
+                                    action={[
+                                        <IconButton
+                                        key="close"
+                                        aria-label="Close"
+                                        color="inherit"
+                                        onClick={this.handleGroceryClose}
+                                        >
+                                        <CloseIcon />
+                                        </IconButton>,
+                                    ]}
+                                />
+                                <Snackbar
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'center',
+                                    }}
+                                    open={this.state.deleteOpen}
+                                    autoHideDuration={1500}
+                                    onClose={this.handleDeleteClose}
+                                    className="snack-grocery"
+                                    ContentProps={{
+                                        'aria-describedby': 'message-id',
+                                    }}
+                                    message={<span id="message-id"><i class="far fa-times-circle"></i>Recipe removed.</span>}
+                                    action={[
+                                        <IconButton
+                                        key="close"
+                                        aria-label="Close"
+                                        color="inherit"
+                                        onClick={this.handleDeleteClose}
+                                        >
+                                        <CloseIcon />
+                                        </IconButton>,
+                                    ]}
+                                />
                             </div> 
                             </div>    
                             <h4 class="mb-0">
@@ -108,4 +185,4 @@ export class RecipeCard extends Component{
     }
 }
 
-export default RecipeCard;
+export default RecipeCard

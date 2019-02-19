@@ -12,9 +12,11 @@ export class Details extends Component{
         return (
             <div class="detail-container">
                 <div class="ing-row">
+                    <div class="title-container">
                         <h4 class="ingredients-title">
                             Ingredients:
                         </h4>
+                    </div>
                         <div class="detail-container">
                             <Ingredients i={this.state.recipe.ingredientList} />
                         </div>
