@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './Recipes.css';
 
 
@@ -29,7 +30,8 @@ export class Cart extends Component{
                 <nav class="navbar navbar-light recipe-header">
                     <a class="navbar-brand"> MomoBooks           
                     </a>
-                    <a class="nav-item nav-link" href="/">Home <i class="fas fa-arrow-right"></i></a>
+                    <Link to={{ pathname: '/'}} class="nav-item nav-link">Home <i class="fas fa-arrow-right"></i></Link>
+                    {/* <a class="nav-item nav-link" href="/">Home <i class="fas fa-arrow-right"></i></a> */}
                 </nav>
                 <div class="app-container">
                     <div class="cart-container">
